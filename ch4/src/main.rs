@@ -13,15 +13,16 @@ fn main() {
 }
 
 /// returns the index of the end of the first word
-fn first_word(s: &String) -> usize {
+fn first_word(s: &String) -> &str {
     let bytes = s.as_bytes();
 
     // loop over bytes to find a space
     for (i, &item) in bytes.iter().enumerate() {
         if item == b' ' {
-            return i;
+            return &s[..i];
         }
     }
 
-    s.len()
+    // return whole word if not found
+    s
 }
